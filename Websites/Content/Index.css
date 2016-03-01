@@ -1,0 +1,31 @@
+﻿.banner_index {
+    height: 440px;
+    background: url(/images/tg01.png) center no-repeat;
+    _height: 400px;
+    padding: 0;
+}
+
+.banner_index .z_wt {
+    width: 960px;
+    height: 444px;
+    padding-top: 250px;
+    margin: auto;
+    _padding-top: 10px;
+}
+.banner_index .z_wt .t1 {
+    font-size: 36px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    font-family: "微软雅黑";
+    color: #fff;
+    letter-spacing: 2px;
+}
+.banner_index .z_wt .t2 {
+    font-size: 20px;
+    line-height: 34px;
+    height: 70px;
+    width: 435px;
+    font-family: "微软雅黑";
+    color: #fff;
+    letter-spacing: 2px;
+}
