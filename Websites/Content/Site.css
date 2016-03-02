@@ -22,3 +22,17 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.logo_a_i {
+    height: 50px;
+    width: 250px;
+    background: url(/images/logo/index.png) no-repeat 0 center;
+    /*background-size:100% 40px;*/
+    display: block;
+}
+
+footer {
+    width: 1300px;
+    margin: 0 auto;
+    position: relative;
+}
