@@ -70,7 +70,12 @@ namespace Websites.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "{0} 必须至少包含 {2} 个字符。", MinimumLength = 6)]
+        [Phone]
+        [Display(Name = "手机号码")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} 必须至少包含 {2} 个字符。", MinimumLength = 1)]
         [DataType(DataType.Password)]
         [Display(Name = "密码")]
         public string Password { get; set; }

@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Websites.Models;
+using Microsoft.Owin.Security.OAuth;
 
 namespace Websites
 {
@@ -14,9 +15,11 @@ namespace Websites
         // 有关配置身份验证的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
+            
             // 配置数据库上下文、用户管理器和登录管理器，以便为每个请求使用单个实例
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
             // 使应用程序可以使用 Cookie 来存储已登录用户的信息
@@ -45,10 +48,12 @@ namespace Websites
             // 此选项类似于在登录时提供的“记住我”选项。
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
+            app.UseQQAuthentication("101151839", "1d92374f3435695a32cf584d174128fe");
             // 取消注释以下行可允许使用第三方登录提供程序登录
             //app.UseMicrosoftAccountAuthentication(
             //    clientId: "",
             //    clientSecret: "");
+
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
@@ -57,12 +62,45 @@ namespace Websites
             //app.UseFacebookAuthentication(
             //   appId: "",
             //   appSecret: "");
-
+            
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+
+            // Setup Authorization Server
+//            app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions
+//            {
+//                AuthorizeEndpointPath = new PathString(Paths.AuthorizePath),
+//                TokenEndpointPath = new PathString(Paths.TokenPath),
+//                ApplicationCanDisplayErrors = true,
+//#if DEBUG
+//                AllowInsecureHttp = true,
+//#endif
+//                // Authorization server provider which controls the lifecycle of Authorization Server
+//                Provider = new OAuthAuthorizationServerProvider
+//                {
+//                    OnValidateClientRedirectUri = ValidateClientRedirectUri,
+//                    OnValidateClientAuthentication = ValidateClientAuthentication,
+//                    OnGrantResourceOwnerCredentials = GrantResourceOwnerCredentials,
+//                    OnGrantClientCredentials = GrantClientCredetails
+//                },
+
+//                // Authorization code provider which creates and receives the authorization code.
+//                AuthorizationCodeProvider = new AuthenticationTokenProvider
+//                {
+//                    OnCreate = CreateAuthenticationCode,
+//                    OnReceive = ReceiveAuthenticationCode,
+//                },
+
+//                // Refresh token provider which creates and receives refresh token.
+//                RefreshTokenProvider = new AuthenticationTokenProvider
+//                {
+//                    OnCreate = CreateRefreshToken,
+//                    OnReceive = ReceiveRefreshToken,
+//                }
+//            });
         }
     }
 }

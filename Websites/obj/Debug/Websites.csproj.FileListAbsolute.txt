@@ -170,3 +170,5 @@ D:\Leon\Github\51JZL\Websites\Websites\bin\zh-Hans\Microsoft.Owin.Security.Micro
 D:\Leon\Github\51JZL\Websites\Websites\obj\Debug\Websites.csprojResolveAssemblyReference.cache
 D:\Leon\Github\51JZL\Websites\Websites\obj\Debug\Websites.dll
 D:\Leon\Github\51JZL\Websites\Websites\obj\Debug\Websites.pdb
+D:\Github\51jzl\Websites\Websites\obj\Debug\Websites.Extensions.QQAuthentication.Resources.resources
+D:\Github\51jzl\Websites\Websites\obj\Debug\Websites.csproj.GenerateResource.Cache
