@@ -37,9 +37,9 @@ namespace Microsoft.Owin.Security.QQ
             Name = TryGetValue(user, "nickname");
             Link = TryGetValue(user, "link");
             //UserName = TryGetValue(user, "username");
-            UserName = "aaa";
+            UserName = "qqusername";
             //Email = TryGetValue(user, "email");
-            Email = "aa@qq.com";
+            Email = "qq@qq.com";
         }
 
         /// <summary>

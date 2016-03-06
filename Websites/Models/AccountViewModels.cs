@@ -8,6 +8,11 @@ namespace Websites.Models
         [Required]
         [Display(Name = "电子邮件")]
         public string Email { get; set; }
+
+        [Required]
+        [Phone]
+        [Display(Name = "手机号码")]
+        public string PhoneNumber { get; set; }
     }
 
     public class ExternalLoginListViewModel
