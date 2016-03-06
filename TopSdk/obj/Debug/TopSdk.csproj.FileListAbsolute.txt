@@ -1,0 +1,5 @@
+D:\Github\51jzl\Websites\TopSdk\bin\Debug\TopSdk.dll
+D:\Github\51jzl\Websites\TopSdk\bin\Debug\TopSdk.pdb
+D:\Github\51jzl\Websites\TopSdk\obj\Debug\TopSdk.csprojResolveAssemblyReference.cache
+D:\Github\51jzl\Websites\TopSdk\obj\Debug\TopSdk.dll
+D:\Github\51jzl\Websites\TopSdk\obj\Debug\TopSdk.pdb

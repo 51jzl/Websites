@@ -172,3 +172,5 @@ D:\Leon\Github\51JZL\Websites\Websites\obj\Debug\Websites.dll
 D:\Leon\Github\51JZL\Websites\Websites\obj\Debug\Websites.pdb
 D:\Github\51jzl\Websites\Websites\obj\Debug\Websites.Extensions.QQAuthentication.Resources.resources
 D:\Github\51jzl\Websites\Websites\obj\Debug\Websites.csproj.GenerateResource.Cache
+D:\Github\51jzl\Websites\Websites\bin\TopSdk.dll
+D:\Github\51jzl\Websites\Websites\bin\TopSdk.pdb

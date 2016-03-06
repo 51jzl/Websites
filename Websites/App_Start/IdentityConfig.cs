@@ -12,6 +12,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Websites.Models;
 using System.Net.Mail;
+using Top.Api;
+using Top.Api.Request;
+using Top.Api.Response;
 
 namespace Websites
 {
@@ -37,6 +40,17 @@ namespace Websites
     {
         public Task SendAsync(IdentityMessage message)
         {
+            ITopClient client = new DefaultTopClient("https://eco.taobao.com/router/rest", "23320955", "488aabf9a95adb4999f6a8e24a8ec928");
+            AlibabaAliqinFcSmsNumSendRequest req = new AlibabaAliqinFcSmsNumSendRequest();
+            req.Extend = "1";
+            req.SmsType = "normal";
+            req.SmsFreeSignName = "注册验证";
+            req.SmsParam = "{\"code\":\""+ message.Body + "\",\"product\":\"51建站啦\"}";
+            req.RecNum = message.Destination;
+            req.SmsTemplateCode = "SMS_5366231";
+            AlibabaAliqinFcSmsNumSendResponse rsp = client.Execute(req);
+            //Console.WriteLine(rsp.Body);
+            //if(rsp.IsError)
             // 在此处插入 SMS 服务可发送短信。
             return Task.FromResult(0);
         }

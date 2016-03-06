@@ -36,7 +36,7 @@
              
              在设置了双因素身份验证后，请取消注释以下块
         *@
-        @*  
+          
             <dt>电话号码:</dt>
             <dd>
                 @(Model.PhoneNumber ?? "无") [
@@ -52,14 +52,14 @@
                 }
                 ]
             </dd>
-        *@
-        <dt>双因素身份验证:</dt>
+        
+        @*<dt>双因素身份验证:</dt>
         <dd>
             <p>
                 没有配置双因素身份验证提供程序。有关设置此 ASP.NET 应用程序
                 以支持双因素身份验证的详细信息，请参阅<a href="http://go.microsoft.com/fwlink/?LinkId=403804">此文</a>。
             </p>
-            @*@if (Model.TwoFactor)
+            @if (Model.TwoFactor)
                 {
                     using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                     {
@@ -78,7 +78,7 @@
                         <input type="submit" value="启用" class="btn btn-link" />
                         </text>
                     }
-                }*@
-        </dd>
+                }
+        </dd>*@
     </dl>
 </div>
