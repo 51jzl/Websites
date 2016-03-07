@@ -1,0 +1,165 @@
+﻿@{
+    object active1 = null, active2 = null, active3 = null;
+    ViewData.TryGetValue("active1", out active1);
+    ViewData.TryGetValue("active2", out active2);
+    ViewData.TryGetValue("active3", out active3);
+}
+<style type="text/css">
+    @@font-face {
+        font-family: "rei";
+        src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20150616"); /* IE9 */
+        src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20150616#iefix") format("embedded-opentype"), /* IE6-IE8 */
+        url("https://i.alipayobjects.com/common/fonts/rei.woff?20150616") format("woff"), /* chrome 6+、firefox 3.6+、Safari5.1+、Opera 11+ */
+        url("https://i.alipayobjects.com/common/fonts/rei.ttf?20150616") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+        url("https://i.alipayobjects.com/common/fonts/rei.svg?20150616#rei") format("svg"); /* iOS 4.1- */
+    }
+
+    .ui-step {
+        padding: 0 40px;
+        margin: 0 auto;
+        font-size: 14px;
+        list-style: none;
+        zoom: 1;
+        position: relative;
+        color: #b7b7b7;
+        overflow: hidden;
+        margin-bottom:50px;
+    }
+
+        .ui-step .ui-step-active {
+            color: #f16f20;
+        }
+        
+    .ui-step li {
+        float: left;
+        height: 54px;
+        margin: 0;
+        width: 50%;
+        position: relative;
+    }
+    .ui-step-3 li {
+        width: 50%;
+    }
+
+
+        .ui-step li .ui-step-line {
+            height: 3px;
+            background: #b9b9b9;
+            display: block;
+            margin-top: 14px;
+            line-height: 1;
+            overflow: hidden;
+        }
+
+        .ui-step li .ui-step-icon {
+            height: 50px;
+            position: absolute;
+            top: 0;
+            width: 150px;
+            text-align: center;
+            left: -25px;
+            font-family: tahoma;
+        }
+
+    .ui-step-icon .iconfont {
+        background-color: #F9F9F9;
+    }
+
+    .ui-step .ui-step-active .iconfont {
+        color: #ff7001;
+    }
+
+    .ui-step-icon .iconfont {
+        font-size: 30px;
+        margin: 0;
+        color: #b7b7b7;
+        color: rgba(0,0,0,.25);
+        line-height: 30px;
+        background: #fff;
+        padding: 0 10px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-shadow: 1px 1px 2px #fff,0 0 0 #ccc,1px 1px 2px #fff;
+    }
+
+    .iconfont {
+        font-family: "rei";
+        font-style: normal;
+        font-weight: normal;
+        cursor: default;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .ui-step-icon .ui-step-number {
+        line-height: 14px;
+        font-style: normal;
+        position: absolute;
+        top: 7px;
+        left: 0;
+        padding: 0 20px;
+        font-weight: 700;
+        color: #fff;
+    }
+
+    .ui-step-icon .ui-step-text {
+        height: 20px;
+        line-height: 20px;
+        position: relative;
+        text-shadow: 0 1px 0 #fff;
+        top: 34px;
+        left: -50px;
+    }
+    .ui-step li.ui-step-end {
+    position: absolute;
+    top: 0;
+    right: -110px;
+    width: 150px;
+    zoom: 1;
+    _clear: both;
+}
+    .ui-step-end .ui-step-number {
+    background: transparent;
+    font-size: 12px;
+    font-style: normal;
+    left: 17px;
+    line-height: 12px;
+    padding: 0;
+    text-shadow: none;
+    top: 9px;
+}
+    .ui-step li.ui-step-end .ui-step-line {
+    display: none;
+}
+    .ui-step .ui-step-done .iconfont {
+    color:#ff9a00;
+    }
+</style>
+
+<ol class="ui-step ui-step-3">
+    <li class="ui-step-start ui-step-done">
+        <div class="ui-step-line">-</div>
+        <div class="ui-step-icon">
+            <i class="iconfont">y</i>
+            <i class="ui-step-number">1</i>
+            <span class="ui-step-text">创建账户</span>
+        </div>
+    </li>
+
+    <li class="ui-step-active">
+        <div class="ui-step-line">-</div>
+        <div class="ui-step-icon">
+            <i class="iconfont">y</i>
+            <i class="ui-step-number">2</i>
+            <span class="ui-step-text">填写身份信息</span>
+        </div>
+    </li>
+    <li class="ui-step-end">
+        <div class="ui-step-line">-</div>
+        <div class="ui-step-icon">
+            <i class="iconfont">y</i>
+            <i class="iconfont ui-step-number"></i>
+            <span class="ui-step-text">成功</span>
+        </div>
+    </li>
+</ol>

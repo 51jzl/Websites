@@ -133,6 +133,18 @@ namespace Websites.Controllers
                     return View(model);
             }
         }
+        #region 注册
+
+        /// <summary>
+        /// 提交手机
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        public ActionResult Fill_Mobile() {
+            return View();
+        }
+
+        #endregion
 
         //
         // GET: /Account/Register

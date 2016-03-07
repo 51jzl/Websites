@@ -67,6 +67,22 @@ namespace Websites.Models
         public bool RememberMe { get; set; }
     }
 
+
+    public class Fill_MobileViewModel
+    {
+        [Required]
+        [Phone]
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "手机号码")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [StringLength(6, ErrorMessage = "请输入6位校验码。", MinimumLength = 6)]
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "短信校验码")]
+        public string Code { get; set; }
+    }
+
     public class RegisterViewModel
     {
         [Required]
