@@ -8,8 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Owin.Security.QQ
-{
+namespace Websites.Extensions.QQAuthentication {
     using System;
     
     

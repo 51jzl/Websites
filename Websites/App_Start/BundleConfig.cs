@@ -29,6 +29,9 @@ namespace Websites
 
             bundles.Add(new StyleBundle("~/Content/index").Include(
                       "~/Content/index.css"));
+
+            bundles.Add(new StyleBundle("~/Content/register").Include(
+                      "~/Content/register.css"));
         }
     }
 }

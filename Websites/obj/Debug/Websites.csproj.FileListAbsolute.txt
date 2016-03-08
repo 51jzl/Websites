@@ -118,7 +118,6 @@ D:\Github\51jzl\Websites\Websites\bin\System.Web.WebPages.dll
 D:\Github\51jzl\Websites\Websites\bin\System.Web.WebPages.Razor.dll
 D:\Github\51jzl\Websites\Websites\bin\TopSdk.dll
 D:\Github\51jzl\Websites\Websites\bin\WebGrease.dll
-D:\Github\51jzl\Websites\Websites\bin\TopSdk.pdb
 D:\Github\51jzl\Websites\Websites\bin\System.Net.Http.Formatting.xml
 D:\Github\51jzl\Websites\Websites\bin\System.Web.Http.xml
 D:\Github\51jzl\Websites\Websites\bin\System.Web.Http.Owin.xml
@@ -174,3 +173,5 @@ D:\Github\51jzl\Websites\Websites\obj\Debug\Websites.Extensions.QQAuthentication
 D:\Github\51jzl\Websites\Websites\obj\Debug\Websites.csproj.GenerateResource.Cache
 D:\Github\51jzl\Websites\Websites\obj\Debug\Websites.dll
 D:\Github\51jzl\Websites\Websites\obj\Debug\Websites.pdb
+D:\Github\51jzl\Websites\Websites\bin\Common.dll
+D:\Github\51jzl\Websites\Websites\bin\Common.pdb

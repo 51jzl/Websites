@@ -15,6 +15,7 @@ using System.Net.Mail;
 using Top.Api;
 using Top.Api.Request;
 using Top.Api.Response;
+using System.Net;
 
 namespace Websites
 {
@@ -22,14 +23,16 @@ namespace Websites
     {
         public Task SendAsync(IdentityMessage message)
         {
-            var mailMessage = new System.Net.Mail.MailMessage("1561888111@qq.com ",
+            var mailMessage = new System.Net.Mail.MailMessage("shlimer@163.com",
                     message.Destination,
                     message.Subject,
                     message.Body
                );
+            mailMessage.IsBodyHtml = true;
             //Send the Message
-            SmtpClient client = new SmtpClient();
-            client.SendAsync(mailMessage, null);
+            SmtpClient client = new SmtpClient("smtp.163.com", 25);
+            client.Credentials = new NetworkCredential("shlimer@163.com", "oksdo456852");
+            client.Send(mailMessage);
 
             // 在此处插入电子邮件服务可发送电子邮件。
             return Task.FromResult(true);
@@ -45,16 +48,15 @@ namespace Websites
             req.Extend = "1";
             req.SmsType = "normal";
             req.SmsFreeSignName = "注册验证";
-            req.SmsParam = "{\"code\":\""+ message.Body + "\",\"product\":\"51建站啦\"}";
+            req.SmsParam = message.Body;
             req.RecNum = message.Destination;
-            req.SmsTemplateCode = "SMS_5366231";
+            req.SmsTemplateCode = message.Subject;
             AlibabaAliqinFcSmsNumSendResponse rsp = client.Execute(req);
-            //Console.WriteLine(rsp.Body);
-            //if(rsp.IsError)
             // 在此处插入 SMS 服务可发送短信。
-            return Task.FromResult(0);
+            return Task.FromResult(!rsp.IsError);
         }
     }
+
 
     // 配置此应用程序中使用的应用程序用户管理器。UserManager 在 ASP.NET Identity 中定义，并由此应用程序使用。
     public class ApplicationUserManager : UserManager<ApplicationUser>
@@ -64,7 +66,7 @@ namespace Websites
         {
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
+        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
             // 配置用户名的验证逻辑
@@ -105,7 +107,7 @@ namespace Websites
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = 
+                manager.UserTokenProvider =
                     new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;

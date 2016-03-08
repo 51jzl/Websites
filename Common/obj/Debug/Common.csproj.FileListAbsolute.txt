@@ -1,0 +1,5 @@
+D:\Github\51jzl\Websites\Common\bin\Debug\Common.dll
+D:\Github\51jzl\Websites\Common\bin\Debug\Common.pdb
+D:\Github\51jzl\Websites\Common\obj\Debug\Common.dll
+D:\Github\51jzl\Websites\Common\obj\Debug\Common.pdb
+D:\Github\51jzl\Websites\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache

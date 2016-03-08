@@ -1,0 +1,78 @@
+﻿@model Websites.Models.Fill_MobileViewModel
+@{
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+    ViewBag.Title = "注册";
+    ViewBag.SHead = "注册";
+    ViewData["active1"] = "ui-step-active";
+
+    @Styles.Render("~/Content/register")
+}
+<div class="container body-content div-register">
+    @Html.Partial("_RegisterSteps", ViewData)
+    @using (Html.BeginForm("Fill_Mobile", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-3 control-label" })
+            <div class="col-md-9 input-group input-group-lg">
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Code, new { @class = "col-md-3 control-label" })
+            <div class="col-md-9 input-group input-group-lg">
+                @Html.TextBoxFor(m => m.Code, new { @class = "form-control", style = "width:150px; float:left" })
+
+                <button id="btnGetCode" type="button" class="btn btn-register btn-lg">获取验证码</button>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:30px;">
+            <div class="col-md-offset-3 col-md-9">
+                <input type="submit" class="btn btn-warning" value="下一步" />
+            </div>
+        </div>
+    }
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnGetCode").bind("click", function () {
+                $.ajax({
+                    type: "Get",
+                    url: "/api/account/GenerateVerificationCode",
+                    data: { PhoneNumber: $("#PhoneNumber").val(), r: Math.random() },
+                    async: false,
+                    success: function (data) {
+                        debugger;
+                        if (data.State = "success") {
+                            GetYzm();
+                        }
+                    },
+                    error: function (xhr) {
+                        debugger;
+                    }
+                });
+            });
+        });
+
+        //设置发送验证码的按钮的倒计时效果
+        var count = 60;
+        function GetYzm() {
+            var thisButton = $("#btnGetCode");
+            thisButton.attr("disabled", "disabled");
+            thisButton.text(count + "秒之后重新获取")
+            count--;
+            if (count > 0) {
+                setTimeout(GetYzm, 1000);
+            }
+            else {
+                thisButton.val("获取验证码");
+                thisButton.attr("disabled", false);
+            }
+        }
+    </script>
+}

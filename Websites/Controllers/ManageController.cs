@@ -123,7 +123,8 @@ namespace Websites.Controllers
                 var message = new IdentityMessage
                 {
                     Destination = model.Number,
-                    Body = code//"你的安全代码是: " +
+                    Body = "{\"code\":\"" + code + "\",\"product\":\"51建站啦\"}",
+                    Subject= "SMS_5366231"
                 };
                 await UserManager.SmsService.SendAsync(message);
             }

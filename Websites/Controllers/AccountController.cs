@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Websites.Models;
+using A.Common;
+using System.Text;
 
 namespace Websites.Controllers
 {
@@ -75,7 +77,7 @@ namespace Websites.Controllers
 
             // 这不会计入到为执行帐户锁定而统计的登录失败次数中
             // 若要在多次输入错误密码的情况下触发帐户锁定，请更改为 shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.PhoneNumber, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -140,18 +142,44 @@ namespace Websites.Controllers
         /// </summary>
         /// <returns></returns>
         [AllowAnonymous]
-        public ActionResult Fill_Mobile() {
-            return View();
-        }
-
-        #endregion
-
-        //
-        // GET: /Account/Register
-        [AllowAnonymous]
-        public ActionResult Register()
+        [HttpGet]
+        public ActionResult Fill_Mobile()
         {
             return View();
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Fill_Mobile(Fill_MobileViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (Session["code"].Equals(model.Code))
+                {
+                    Session.Remove("code");
+                    Session["isCode"] = "ok";
+                    return RedirectToAction("Fill_User_Info", new { PhoneNumber = model.PhoneNumber });
+                }
+                else
+                    return View(model);
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Fill_User_Info(string PhoneNumber)
+        {
+            if (Session["isCode"] != null && Session["isCode"].Equals("ok"))
+            {
+                RegisterViewModel model = new RegisterViewModel();
+                model.PhoneNumber = PhoneNumber;
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("Fill_Mobile");
+            }
+
         }
 
         //
@@ -159,11 +187,11 @@ namespace Websites.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Fill_User_Info(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber };
+                var user = new ApplicationUser { UserName = model.PhoneNumber, Email = model.Email, PhoneNumber = model.PhoneNumber };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -171,9 +199,15 @@ namespace Websites.Controllers
 
                     // 有关如何启用帐户确认和密码重置的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=320771
                     // 发送包含此链接的电子邮件
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "确认你的帐户", "请通过单击 <a href=\"" + callbackUrl + "\">這裏</a>来确认你的帐户");
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    StringBuilder bodyHtml = new StringBuilder("<div style=\"margin: 0px auto; width: 700px; background-color: #eeeeee; padding:20px\"><div style=\"background-color:#fff;margin:0 15px;padding:30px 25px;\">");
+                    bodyHtml.Append("<p style=\"font-size:14px;margin:0 0 15px 0;font-weight:bold;\">亲爱的<a href=\"mailto:" + model.Email + "\"target=\"_blank\">" + model.Email + "</a>，</p>");
+                    bodyHtml.Append("<p>请通过单击 <a href=\"" + callbackUrl + "\">这里</a>来确认你的帐户 From WWW.51JZL.COM 我要建站啦</p>");
+                    bodyHtml.Append("<p style=\"margin:30px 0 3px 0;font-size:12px;\">如果点击无效，请复制下方网页地址到浏览器地址栏中打开：</p>");
+                    bodyHtml.Append("<p style=\"color:#808080;margin:3px 0 0 0;font-size:12px;\"><a href=\"" + callbackUrl + "\"target=\"_blank\">" + callbackUrl + "</a></p>");
+                    bodyHtml.Append("</div></div>");
+                    await UserManager.SendEmailAsync(user.Id, "确认你的帐户", bodyHtml.ToString());
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -184,6 +218,8 @@ namespace Websites.Controllers
             return View(model);
         }
 
+
+        #endregion
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]

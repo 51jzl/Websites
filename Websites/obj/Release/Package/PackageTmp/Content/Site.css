@@ -1,0 +1,120 @@
+﻿body {
+    padding-top: 105px;
+    padding-bottom: 57px;
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.container-top {
+    height: 80px;
+    line-height: 80px;
+}
+
+.logo_a_i {
+    height: 80px;
+    width: 250px;
+    background: url(/images/logo/index.png) no-repeat 0 center;
+    /*background-size:100% 40px;*/
+    display: block;
+}
+
+.logo_a_i_s1 {
+    border-right: 2px solid gray;
+    float: left;
+    height: 45px;
+    margin-top: 20px;
+    width:180px;
+}
+
+    .logo_a_i_s1 img {
+        vertical-align: top;
+    }
+
+.logo_a_i_s2 {
+    margin-top:20px;
+    float: left;
+    padding: 13px 0 0 10px;
+    font-size: 24px;
+    color: gray;
+    height: 24px;
+    line-height: 24px;
+    font-weight: 100;
+    font-family: Microsoft YaHei,Hiragino Sans GB,\5b8b\4f53;
+}
+
+footer {
+    width: 1300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.top-navbar {
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    background: #333;
+}
+
+    .top-navbar a {
+        color: #fff;
+        font: 12px/1.5 "Microsoft YaHei",tahoma,arial,Hiragino Sans GB,\5b8b\4f53;
+    }
+
+.top-navbar-right {
+    float: right;
+    margin: 0px;
+    padding: 0px;
+}
+
+    .top-navbar-right li {
+        margin: 0px;
+        padding: 0px;
+        float: left;
+        padding: 0px 6px;
+    }
+
+.navbar-default-top {
+    background: rgba(255,255,255,.9);
+    border-bottom: 1px #eeeeee solid;
+}
+
+.navbar-nav-top {
+    height: 80px;
+    line-height: 80px;
+}
+
+    .navbar-nav-top li {
+        float: left;
+    }
+
+    .navbar-nav-top a {
+        color: #898989;
+        font-size: 16px;
+        display: block;
+        text-decoration: none;
+        padding: 0 30px;
+    }

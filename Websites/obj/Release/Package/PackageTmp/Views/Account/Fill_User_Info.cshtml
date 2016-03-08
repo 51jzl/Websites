@@ -1,0 +1,51 @@
+﻿@model Websites.Models.RegisterViewModel
+@{
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+    ViewBag.Title = "注册";
+    ViewBag.SHead = "注册";
+    ViewData["active1"] = "ui-step-done";
+    ViewData["active2"] = "ui-step-active";
+
+    @Styles.Render("~/Content/register")
+}
+
+
+<div class="container body-content div-register">
+    @Html.Partial("_RegisterSteps", ViewData)
+    @using (Html.BeginForm("Fill_User_Info", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.PhoneNumber);
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-3 control-label" })
+            <div class="col-md-9 input-group input-group-lg">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-3 control-label" })
+            <div class="col-md-9 input-group input-group-lg">
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", disabled = "true" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-3 control-label" })
+            <div class="col-md-9 input-group input-group-lg">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-3 control-label" })
+            <div class="col-md-9 input-group input-group-lg">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:30px;">
+            <div class="col-md-offset-3 col-md-9">
+                <input type="submit" class="btn btn-warning" value="下一步" />
+            </div>
+        </div>
+    }
+
+</div>

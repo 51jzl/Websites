@@ -54,9 +54,9 @@ namespace Websites.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "电子邮件")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Phone]
+        [Display(Name = "手机号码")]
+        public string PhoneNumber { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

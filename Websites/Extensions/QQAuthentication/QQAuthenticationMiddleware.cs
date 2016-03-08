@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.DataHandler;
 using Microsoft.Owin.Security.DataProtection;
 using Microsoft.Owin.Security.Infrastructure;
 using Owin;
+using Websites.Extensions.QQAuthentication;
 
 namespace Microsoft.Owin.Security.QQ
 {
