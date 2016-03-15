@@ -2,9 +2,12 @@
     background: #f8f8f8;
     margin: 0px;
     font-size: 12px;
-    font-family: "Microsoft Yahei",Arial,tahoma,arial !important;
     color: #333;
     min-width: 1200px;
+}
+
+.webs {
+    font-family: "Microsoft Yahei",Arial,tahoma,arial !important;
 }
 
 a {
@@ -227,26 +230,28 @@ h5 {
                 border-color: #fff;
                 border-right-color: #eee;
             }
-            .webs .m-t li h5 {
-    color: #333333;
-    font-size: 18px;
-    line-height: 22px;
-    margin: 15px 0 0 20px;
-    text-align: left;
-}
-             .webs .m-t li h5 span {
-    display: block;
-    color: #7a7a7a;
-    font-size: 12px;
-}
 
-             .webs .m-t li .li-img {
-    width: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    text-align: center;
-}
+            .webs .m-t li h5 {
+                color: #333333;
+                font-size: 18px;
+                line-height: 22px;
+                margin: 15px 0 0 20px;
+                text-align: left;
+            }
+
+                .webs .m-t li h5 span {
+                    display: block;
+                    color: #7a7a7a;
+                    font-size: 12px;
+                }
+
+            .webs .m-t li .li-img {
+                width: 100%;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                text-align: center;
+            }
 
 
 .fl {

@@ -32,3 +32,14 @@
         .div-register form label {
             font-weight: normal;
         }
+
+    .div-register .alert {
+    padding:0px;
+    border:0px none;
+    margin:0px 15px;
+    border-radius:0px;
+    }
+    .div-register .field-validation-error {
+    padding:15px;
+    display:block;
+    }

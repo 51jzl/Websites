@@ -189,7 +189,6 @@
             if (!form) {  // Cannot do client-side validation without a form
                 return;
             }
-
             valInfo = validationInfo(form);
             valInfo.options.rules[element.name] = rules = {};
             valInfo.options.messages[element.name] = messages = {};
@@ -216,7 +215,6 @@
                     });
                 }
             });
-
             $.extend(rules, { "__dummy__": true });
 
             if (!skipAttach) {
@@ -369,7 +367,7 @@
     }
 
     adapters.addSingleVal("regex", "pattern");
-    adapters.addBool("creditcard").addBool("date").addBool("digits").addBool("email").addBool("number").addBool("url");
+    adapters.addBool("creditcard").addBool("date").addBool("digits").addBool("email").addBool("phone").addBool("number").addBool("url");
     adapters.addMinMax("length", "minlength", "maxlength", "rangelength").addMinMax("range", "min", "max", "range");
     adapters.addMinMax("minlength", "minlength").addMinMax("maxlength", "minlength", "maxlength");
     adapters.add("equalto", ["other"], function (options) {

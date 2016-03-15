@@ -70,13 +70,13 @@ namespace Websites.Models
 
     public class Fill_MobileViewModel
     {
-        [Required]
-        [Phone]
+        [Required(ErrorMessage = "请输入手机号码")]
+        [Phone(ErrorMessage = "请输入正确的11位手机号码")]
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "手机号码")]
         public string PhoneNumber { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "请输入短信校验码")]
         [StringLength(6, ErrorMessage = "请输入6位校验码。", MinimumLength = 6)]
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "短信校验码")]
